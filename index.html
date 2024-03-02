@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exploring DOM</title>
 </head>
+
 <body>
     <h1>Exploring DOM</h1>
     <button onclick="console.log('Hello From HTML')">Click Me</button>
@@ -13,8 +15,38 @@
     <button onclick="document.body.style.backgroundColor = 'yellow'">Make Yellow</button>
     <button id="bg-red">Make Red</button>
     <button id="bg-purple">Make Purple</button>
+    <button id="bg-white">Default</button>
 
+    <br>
+    <br>
+    <p id="display-input">Display Your Input</p>
+    <input id="input-field" type="text">
+    <button id="btn-update">Update</button>
+
+    <br><br>
+    <div id="post-container">
+        <h1>Post Your Comment</h1>
+
+    </div>
+    <textarea name="" id="text-field" cols="60" rows="10"></textarea>
+    <br>
+    <button id="btn-post">Post</button>
 
     <script src="js/event.js"></script>
+    <script>
+        document.getElementById('btn-post').addEventListener('click', function () {
+            // console.log("Clicked By Post Btn");
+            const textField = document.getElementById("text-field");
+            const newText = textField.value;
+            // console.log(text);
+            const postContainer = document.getElementById('post-container');
+            const p = document.createElement('p');
+            p.innerText = newText;
+            postContainer.appendChild(p);
+            textField.value='';
+
+        })
+    </script>
 </body>
+
 </html>
