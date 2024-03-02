@@ -19,31 +19,46 @@
 
     <br>
     <br>
+    <!-- Update Text -->
     <p id="display-input">Display Your Input</p>
     <input id="input-field" type="text">
     <button id="btn-update">Update</button>
 
     <br><br>
+    <!-- Post Comment -->
     <div id="post-container">
         <h1>Post Your Comment</h1>
-
     </div>
     <textarea name="" id="text-field" cols="60" rows="10"></textarea>
     <br>
     <button id="btn-post">Post</button>
 
+    <br>
+    <br>
+    <!-- Delete Secret -->
+    <h1>Secret Section</h1>
+    <p id="secret-text">The Secret should be delete...</p>
+    <input type="text" id="delete-field" placeholder="Type delete">
+    <button id="btn-delete" disabled>Delete</button>
+
     <script src="js/event.js"></script>
     <script>
-        document.getElementById('btn-post').addEventListener('click', function () {
-            // console.log("Clicked By Post Btn");
-            const textField = document.getElementById("text-field");
-            const newText = textField.value;
-            // console.log(text);
-            const postContainer = document.getElementById('post-container');
-            const p = document.createElement('p');
-            p.innerText = newText;
-            postContainer.appendChild(p);
-            textField.value='';
+        document.getElementById('btn-delete').addEventListener('click', function () {
+            const secretText = document.getElementById("secret-text");
+            secretText.style.display = 'none';
+
+        })
+
+        document.getElementById('delete-field').addEventListener("keyup", function (e) {
+            const text = e.target.value;
+            const btnDelete = document.getElementById("btn-delete");
+            if (text === "delete") {
+                btnDelete.removeAttribute('disabled');
+            }
+            else {
+                btnDelete.setAttribute("disabled", true);
+            }
+
 
         })
     </script>
