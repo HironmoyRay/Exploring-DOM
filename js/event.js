@@ -37,3 +37,19 @@ document.getElementById("btn-post").addEventListener("click", function () {
   postContainer.appendChild(p);
   textField.value = "";
 });
+
+// Delete Secret
+document.getElementById("btn-delete").addEventListener("click", function () {
+  const secretText = document.getElementById("secret-text");
+  secretText.style.display = "none";
+});
+
+document.getElementById("delete-field").addEventListener("keyup", function (e) {
+  const text = e.target.value;
+  const btnDelete = document.getElementById("btn-delete");
+  if (text === "delete") {
+    btnDelete.removeAttribute("disabled");
+  } else {
+    btnDelete.setAttribute("disabled", true);
+  }
+});

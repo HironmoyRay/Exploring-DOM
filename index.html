@@ -19,12 +19,15 @@
 
     <br>
     <br>
+    <hr>
     <!-- Update Text -->
-    <p id="display-input">Display Your Input</p>
+    <h1>Display Your Input</h1>
+    <p id="display-input">Here to Display.</p>
     <input id="input-field" type="text">
     <button id="btn-update">Update</button>
 
     <br><br>
+    <hr>
     <!-- Post Comment -->
     <div id="post-container">
         <h1>Post Your Comment</h1>
@@ -33,34 +36,48 @@
     <br>
     <button id="btn-post">Post</button>
 
-    <br>
-    <br>
+    <br><br><hr>
     <!-- Delete Secret -->
-    <h1>Secret Section</h1>
+    <h1>Delete your Secret</h1>
     <p id="secret-text">The Secret should be delete...</p>
     <input type="text" id="delete-field" placeholder="Type delete">
     <button id="btn-delete" disabled>Delete</button>
 
+    <br><br><hr>
+    <!-- Bubbling & Delegation -->
+    <h1>Event Bubbling & Delegation</h1>
+    <ul id="item-container">
+        <li class="item">Lorem, ipsum dolor.</li>
+        <li class="item">Laudantium, dolores numquam!</li>
+        <li class="item">Id, laudantium aliquid!</li>
+        <li class="item">Nemo, iste provident.</li>
+        <li class="item">Quae, tempore doloribus?</li>
+    </ul>
+    <button id="btn-add">Add New</button>
+
+
     <script src="js/event.js"></script>
     <script>
-        document.getElementById('btn-delete').addEventListener('click', function () {
-            const secretText = document.getElementById("secret-text");
-            secretText.style.display = 'none';
+        //  <!-- Bubbling & Delegation -->
+        
+        // const items = document.getElementsByClassName("item");
+        // for(const item of items){
+        //     item.addEventListener("click",function(event){
+        //         event.target.parentNode.removeChild(event.target);
+        //     })
+        // }
 
+        document.getElementById("item-container").addEventListener('click',function(event){
+            event.target.parentNode.removeChild(event.target);
         })
 
-        document.getElementById('delete-field').addEventListener("keyup", function (e) {
-            const text = e.target.value;
-            const btnDelete = document.getElementById("btn-delete");
-            if (text === "delete") {
-                btnDelete.removeAttribute('disabled');
-            }
-            else {
-                btnDelete.setAttribute("disabled", true);
-            }
-
-
+        document.getElementById("btn-add").addEventListener("click",function(){
+            const listContainer = document.getElementById("item-container");
+            const li = document.createElement("li");
+            li.innerText = "New Items Added";
+            listContainer.appendChild(li);
         })
+
     </script>
 </body>
 
